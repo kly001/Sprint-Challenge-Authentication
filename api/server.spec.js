@@ -13,16 +13,16 @@ describe('GET /', () => {
         expect(res.status).toBe(200);
     });
 
-    // does it return the right data type?
+
     it('should be json', async () => {
         const res = await request(server).get('/');
         expect(res.type).toBe('application/json');
     })
 
-    // does it return the right data?
+
     it('should return the right object', async () => {
         const res = await request(server).get('/');
-        expect(res.body).toEqual({ api: 'up' });
+        expect(res.body).toEqual("<h1> Let's get it on ! </h1>");
     })
 });
 });
