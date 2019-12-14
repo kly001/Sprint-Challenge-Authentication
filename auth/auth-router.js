@@ -4,12 +4,11 @@ const jwt = require('jsonwebtoken');
 const secrets = require('../config/secrets.js')
 const restricted = require('./authenticate-middleware.js')
 
-// const Users = require('../users/users-model.js');
+const Users = require('../users/users-model.js');
 
-// for endpoints beginning with /api/auth
 router.post('/register', (req, res) => {
   let user = req.body;
-  const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n
+  const hash = bcrypt.hashSync(user.password, 10); 
   user.password = hash;
 
   Users.add(user)
@@ -47,9 +46,6 @@ router.post('/login', (req, res) => {
 });
 
 
-
-
-// Function to create a token--------------------------
 function genToken(user) {
   const payload = {
     userid: user.id,
@@ -60,6 +56,6 @@ function genToken(user) {
 
   return token;
 }
-//-------------------------------------------------
+
 
 module.exports = router;
