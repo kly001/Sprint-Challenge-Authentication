@@ -42,14 +42,14 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 - [ ] What is the purpose of using _sessions_?
 
-    Sessions are  a simple way to store data for individual users against a unkque session id.
+    Sessions are  a simple way to store data for individual users against a unique session id.
     They are used to persist state information betweeen page requests.
 
 ---------------------------------------------------------------------------------------------------------------------
 
 - [ ] What does bcrypt do to help us store passwords in a secure manner.
 
-    Bcrypt is used to had passwords.
+    Bcrypt is used to hash passwords.
 
 ---------------------------------------------------------------------------------------------------------------------
 

@@ -21,13 +21,12 @@ describe('the server', () => {
             })
         });
 
+
         it('should be json', async () => {
-
             const res = await request(server).get('/');
-
             expect(res.type).toBe('application/json');
-
         })
+        
 
         it('should return the correct object', () => {
             return request(server)
