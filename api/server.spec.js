@@ -1,28 +1,42 @@
 const server = require('./server.js');
 
+const db = require('../database/dbConfig.js');
+
 const request = require('supertest');
 
-// describe('server.js', () => {
-//     test('should be the testing environment', () => {
-//         expect(process.env.DB_ENV).toBe('testing')
-//     });
 
-describe('GET /', () => {
-    it('should return 200 OK', async () => {
-        const res = await request(server).get('/');
-        expect(res.status).toBe(200);
-    });
+describe('the server', () => {
 
+    beforeEach(async() => {
+        await db('users').truncate();
+    })
 
-//     it('should be json', async () => {
-//         const res = await request(server).get('/');
-//         expect(res.type).toBe('application/json');
-//     })
+    describe('GET /', () => {
 
+        it('should return status 200', () => {
+            return request(server)
+            .get('/')
+            .then(res => {
+                expect(res.status).toBe(200)
+            })
+        });
 
-//     it('should return the right object', async () => {
-//         const res = await request(server).get('/');
-//         expect(res.body).toEqual("<h1> Let's get it on ! </h1>");
-//     })
-//   });
-});
+        it('should be json', async () => {
+
+            const res = await request(server).get('/');
+
+            expect(res.type).toBe('application/json');
+
+        })
+
+        it('should return the correct object', () => {
+            return request(server)
+            .get('/')
+            .then(res => {
+                expect(res.type).toBe('application/json')
+                expect(res.body).toEqual({ api: "Up and running" })
+            })
+        })
+    })
+  
+})
